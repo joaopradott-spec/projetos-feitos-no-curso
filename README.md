@@ -8,7 +8,9 @@ Repositório com soluções desenvolvidas/testadas durante o curso.
 
 Pasta: [`roblox-studio/`](./roblox-studio)
 
-Abre o Roblox Studio com um proxy local preso ao tether USB, permitindo que o Studio consulte os serviços de rede necessários sem exigir privilégios administrativos.
+**Instalação automática:** se o Studio não existir no PC, o script baixa o bootstrapper oficial, instala no perfil do usuário e depois abre o Studio pelo proxy local.
+
+O roteamento prefere a rede principal e usa o tether USB como fallback quando necessário.
 
 ### Minecraft funcional — TLauncher
 
@@ -16,20 +18,20 @@ Pasta: [`minecraft-tlauncher/`](./minecraft-tlauncher)
 
 Versão v11 Dual Proxy: usa HTTP/HTTPS + SOCKS5, prefere a rede principal e usa a conexão do celular como fallback quando necessário.
 
-## Estrutura
+## Uso rápido
+
+### Roblox Studio
 
 ```text
-projetos-feitos-no-curso/
-├── README.md
-├── .gitignore
-├── roblox-studio/
-│   ├── README.md
-│   ├── RobloxStudio-Celular.ps1
-│   └── Abrir Roblox Studio.cmd
-└── minecraft-tlauncher/
-    ├── README.md
-    ├── TLauncher-Celular.ps1
-    └── TLauncher v11 DUAL PROXY.cmd
+roblox-studio\Abrir Roblox Studio.cmd
+```
+
+Não precisa instalar o Studio manualmente antes.
+
+### Minecraft / TLauncher
+
+```text
+minecraft-tlauncher\TLauncher v11 DUAL PROXY.cmd
 ```
 
 ## Requisitos gerais

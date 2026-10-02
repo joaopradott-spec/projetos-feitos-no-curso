@@ -1,16 +1,39 @@
-# Roblox Studio funcional
+# Roblox Studio funcional — instalação automática
 
-Launcher para o Roblox Studio usando um proxy HTTP CONNECT local cujo tráfego de saída é preso ao tether USB do celular.
+Agora esta pasta funciona também em um PC do curso onde o Studio ainda **não está instalado**.
 
 ## Uso
 
-1. Ative o roteamento USB do celular.
-2. Confirme que o Roblox Studio já está instalado.
+1. Ative a rede normal do PC.
+2. Conecte o celular por USB e ative o roteamento USB.
 3. Execute `Abrir Roblox Studio.cmd`.
-4. Mantenha a janela aberta enquanto usa o Studio.
+4. Mantenha a janela aberta enquanto usar o Studio.
 
-O script procura automaticamente a versão mais recente de `RobloxStudioBeta.exe` em `%LOCALAPPDATA%\Roblox\Versions`.
+## O que o script faz
 
-## Motivo
+- detecta o tether USB;
+- detecta a outra rota de rede;
+- inicia um proxy HTTP/HTTPS local;
+- prefere a rede principal e usa o celular como fallback;
+- testa um endpoint necessário do Roblox;
+- procura `RobloxStudioBeta.exe`;
+- se o Studio não existir:
+  - baixa `RobloxStudioLauncherBeta.exe` do CDN oficial da Roblox;
+  - executa a instalação no perfil do usuário;
+  - aguarda o Studio aparecer em `%LOCALAPPDATA%\Roblox\Versions`;
+- abre o Studio usando o proxy;
+- restaura as configurações de proxy temporárias ao terminar.
 
-Em algumas redes gerenciadas, o Studio abre mas falha ao consultar serviços necessários para inicialização. O script mantém somente o processo iniciado usando o proxy local e não exige privilégios administrativos.
+## Onde o Studio fica
+
+Normalmente:
+
+```text
+%LOCALAPPDATA%\Roblox\Versions\version-...\RobloxStudioBeta.exe
+```
+
+## Importante
+
+O instalador não fica dentro do Git. Ele é baixado somente quando necessário, para evitar guardar um executável grande e desatualizado no repositório.
+
+O fallback pelo celular pode consumir dados móveis quando a rede principal bloquear um destino.
